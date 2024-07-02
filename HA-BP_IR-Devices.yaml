@@ -1,0 +1,48 @@
+blueprint:
+  name: Script - IR Device
+  description: >-
+    Este blueprint automatiza um código para um dispositivo infravermelho Zigbee.
+  domain: automation
+  input:
+    alias:
+      name: Alias
+      description: Nome da automação.
+      selector:
+        text:
+    ir_device:
+      name: IR_Device
+      description: Nome amigável do dispositivo IR Zigbee.
+      selector:
+        entity:
+          domain: switch
+          multiple: false
+    payload:
+      name: Payload
+      description: Código IR para a automação.
+      selector:
+        text:
+    icon:
+      name: Ícone
+      description: Ícone da automação.
+      selector:
+        icon:
+  source_url: https://example.com/link-para-o-blueprint
+
+trigger:
+  - platform: event
+    event_type: automation_triggered
+
+action:
+  - service: mqtt.publish
+    data:
+      topic: >
+        zigbee2mqtt/{{ ir_device }}/set
+      payload: >
+        {"ir_code_to_send":"{{ payload }}"}
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
+mode: single
+icon: !input 'icon'
