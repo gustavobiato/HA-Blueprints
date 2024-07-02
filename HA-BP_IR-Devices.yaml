@@ -4,11 +4,11 @@ blueprint:
     Este blueprint automatiza um código para um dispositivo infravermelho Zigbee.
   domain: automation
   input:
-    alias:
-      name: Alias
-      description: Nome da automação.
-      selector:
-        text:
+    #alias:
+    #  name: Alias
+    #  description: Nome da automação.
+    #  selector:
+    #    text:
     ir_device:
       name: IR_Device
       description: Nome amigável do dispositivo IR Zigbee.
