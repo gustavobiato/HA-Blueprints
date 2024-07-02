@@ -45,4 +45,4 @@ action:
       seconds: 2
       milliseconds: 0
 mode: single
-icon: !input 'icon'
+#icon: !input 'icon'
